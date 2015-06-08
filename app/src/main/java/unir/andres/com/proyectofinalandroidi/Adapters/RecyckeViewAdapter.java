@@ -41,7 +41,6 @@ public class RecyckeViewAdapter extends RecyclerView.Adapter<RecyckeViewAdapter.
 
         itemView.setOnClickListener(this);
         DataViewHolder tvh = new DataViewHolder(itemView,mContext);
-
         return tvh;
     }
 
