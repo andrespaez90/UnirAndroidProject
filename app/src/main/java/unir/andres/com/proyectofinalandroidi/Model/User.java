@@ -5,10 +5,12 @@ package unir.andres.com.proyectofinalandroidi.Model;
  */
 public class User {
 
+    private String Name;
     private String Username;
     private String Password;
 
-    public User(String username, String password) {
+    public User(String name, String username, String password) {
+        Name = name;
         Username = username;
         Password = password;
     }
@@ -19,5 +21,13 @@ public class User {
 
     public String getPassword() {
         return Password;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 }

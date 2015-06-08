@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="unir.andres.com.proyectofinalandroidi.UI.ListActivity">
+
+    <item android:id="@+id/list_action_search"
+        android:title="Buscar"
+        android:icon="@mipmap/ic_magnify"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+</menu>

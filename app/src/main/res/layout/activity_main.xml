@@ -3,21 +3,15 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".StartActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="unir.andres.com.proyectofinalandroidi.UI.MainActivity">
 
-    <TextView android:text="@string/welcome" android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_marginBottom="46dp"
-        android:layout_above="@+id/imageView"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/android_icon"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tmain_welcome"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

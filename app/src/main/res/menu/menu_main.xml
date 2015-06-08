@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="unir.andres.com.proyectofinalandroidi.UI.MainActivity">
+
+    <item android:id="@+id/mainmenu_logout" android:title="@string/Logout"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/mainmenu_usuarios" android:title="@string/Usuarios"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/mainmenu_enlinea" android:title="@string/enLinea"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+</menu>

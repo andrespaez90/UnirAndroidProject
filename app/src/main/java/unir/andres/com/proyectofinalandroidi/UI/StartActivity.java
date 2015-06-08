@@ -1,10 +1,15 @@
 package unir.andres.com.proyectofinalandroidi.UI;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import unir.andres.com.proyectofinalandroidi.Model.ActivityKeys;
 import unir.andres.com.proyectofinalandroidi.R;
 
 
@@ -25,16 +30,54 @@ public class StartActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        Intent intent;
+        if (id == R.id.startmenu_informacion) {
+            createDialog();
+            return true;
+        }else if( id == R.id.startmenu_Login){
+            intent = new Intent(this,LoginActivity.class);
+            startActivityForResult(intent, ActivityKeys.LOGIN_ACTIVITY.ordinal());
+            return true;
+        }else if( id == R.id.startmenu_registro ){
+            intent = new Intent(this,RegistroActivity.class);
+            startActivityForResult(intent, ActivityKeys.REGISTER_ACTIVITY.ordinal());
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Intent intent;
+        if( requestCode == ActivityKeys.LOGIN_ACTIVITY.ordinal()){
+            if( resultCode == Activity.RESULT_OK ){
+                setResult(RESULT_OK);
+                finish();
+            }
+        }
+        if( requestCode == ActivityKeys.REGISTER_ACTIVITY.ordinal()){
+            if( resultCode == Activity.RESULT_OK ){
+                intent = new Intent(this,LoginActivity.class);
+                startActivityForResult(intent, ActivityKeys.LOGIN_ACTIVITY.ordinal());
+                return;
+            }
+        }
+    }
+
+
+    private void createDialog() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Atencion!");
+        builder.setMessage("Para acceder a la informacion debe estar registrado.")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+        builder.create();
+        builder.show();
     }
 }

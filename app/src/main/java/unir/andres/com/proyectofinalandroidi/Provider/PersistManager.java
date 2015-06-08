@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import unir.andres.com.proyectofinalandroidi.Model.User;
@@ -20,7 +21,7 @@ public class PersistManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE User (user TEXT, pass TEXT, PRIMARY KEY(user) );");
+        db.execSQL("CREATE TABLE User (name TEXT, user TEXT, pass TEXT, PRIMARY KEY(user) );");
     }
 
     @Override
@@ -31,13 +32,26 @@ public class PersistManager extends SQLiteOpenHelper {
     public String Save(User p) {
         try {
             SQLiteDatabase db = getWritableDatabase();
-            db.execSQL("INSERT INTO User VALUES ('" + p.getUsername() + "'," + "'" + p.getPassword() + "')");
+            db.execSQL("INSERT INTO User VALUES ('"+p.getName()+"',  '" + p.getUsername() + "', '" + p.getPassword() + "')");
             return "success";
         } catch (SQLiteConstraintException ex) {
             return "id";
         } catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    public User getUser(User u){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT name FROM User WHERE user= '" + u.getUsername() + "' AND pass= '" + u.getPassword() + "';",null);
+        if( cursor.getCount() == 0 )
+            return null;
+        else{
+            cursor.moveToFirst();
+            u.setName(cursor.getString(0) );
+            return u;
+        }
+
     }
 
     public String Delete(String id){
@@ -53,26 +67,23 @@ public class PersistManager extends SQLiteOpenHelper {
     public String Edit(String id, String name) {
         try {
             SQLiteDatabase db = getWritableDatabase();
-            db.execSQL("UPDATE  User SET name = '"+name+"' WHERE DNI ='"+id+"';");
+            db.execSQL("UPDATE  User SET pass = '"+name+"' WHERE username ='"+id+"';");
             return "success";
         } catch (Exception e) {
             return e.getMessage();
         }
     }
 
-    public Vector<User> getsaved() {
-        Vector<User> result = new Vector<User>();
+    public ArrayList<User> getsaved() {
+        ArrayList<User> result = new ArrayList<User>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursosr = db.rawQuery("SELECT * FROM User", null);
         while(cursosr.moveToNext())
         {
-            User u = new User(cursosr.getString(0), cursosr.getString(1));
+            User u = new User(cursosr.getString(0), cursosr.getString(1), cursosr.getString(2));
             result.add(u);
         }
-
         cursosr.close();
-
-
         return result;
     }
 

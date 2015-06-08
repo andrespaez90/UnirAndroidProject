@@ -28,8 +28,10 @@
                 android:id="@+id/login_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/Username"
-                android:gravity="center_vertical|center" />
+                android:hint="@string/Usuario"
+                android:gravity="center_vertical|center"
+                android:imeOptions="actionNext"/>
+
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
     </LinearLayout>
@@ -56,7 +58,7 @@
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/Password"
+                android:hint="@string/Contrasena"
                 android:inputType="textPassword"
                 android:gravity="bottom|center" />
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -72,25 +74,18 @@
         android:layout_marginTop="5px"
         android:layout_marginBottom="5px"
         android:id="@+id/login_error"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Login"
-        android:background="@color/link_text_material_light"
-        android:textColor="@color/background_material_light"
-        android:id="@+id/login_Login" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Resgistro"
-        android:id="@+id/login_singin"
-        android:layout_marginTop="10px"
-        android:textColor="@color/bright_foreground_inverse_material_light"
-        android:background="@color/material_blue_grey_800"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/principal_buttom"
+        android:textColor="@android:color/white"
+        android:id="@+id/login_Login"  />
 
 
 </LinearLayout>
